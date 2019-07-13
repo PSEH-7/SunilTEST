@@ -13,7 +13,7 @@ node('master') {
 	stage('run') {
 		sh 'docker ps -f name=sapient_wheather_report-0.0.1-SNAPSHOT -q | xargs --no-run-if-empty docker container stop'
 		sh 'docker container ls -a -fname=sapient_wheather_report-0.0.1-SNAPSHOT -q | xargs -r docker container rm'
-        sh "docker run -d  -m 2048M -p 8080:8080 --name sapient_wheather_report-0.0.1-SNAPSHOT -i -t sapient_wheather_report-0.0.1-SNAPSHOT:latest"
+        sh "docker run -d  -m 2048M -p 8081:8081 --name sapient_wheather_report-0.0.1-SNAPSHOT -i -t sapient_wheather_report-0.0.1-SNAPSHOT:latest"
         echo "docker run successful"
     }
  }
