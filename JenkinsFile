@@ -8,12 +8,12 @@ node('master') {
     	sh "mvn test"
     } 
 	stage('Build') {
-		sh "docker build -t sapient_wheather_report ."
+		sh "docker build -t sapient_wheather_report-0.0.1-SNAPSHOT ."
     }
 	stage('run') {
-		sh 'docker ps -f name=sapient_wheather_report -q | xargs --no-run-if-empty docker container stop'
-		sh 'docker container ls -a -fname=sapient_wheather_report -q | xargs -r docker container rm'
-        sh "docker run -d  -m 2048M -p 8080:8080 --name football -i -t sapient_wheather_report:latest"
+		sh 'docker ps -f name=sapient_wheather_report-0.0.1-SNAPSHOT -q | xargs --no-run-if-empty docker container stop'
+		sh 'docker container ls -a -fname=sapient_wheather_report-0.0.1-SNAPSHOT -q | xargs -r docker container rm'
+        sh "docker run -d  -m 2048M -p 8080:8080 --name sapient_wheather_report-0.0.1-SNAPSHOT -i -t sapient_wheather_report-0.0.1-SNAPSHOT:latest"
         echo "docker run successful"
     }
  }
